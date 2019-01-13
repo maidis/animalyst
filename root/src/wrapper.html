@@ -3,12 +3,27 @@
     %]"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<link rel="icon" href="/static/favicon.ico">
+<link rel="icon" data-emoji="🦊" type="image/png">
 <title>{% if title %}{{ title }} - {% endif %}Animalyst</title>
 <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 
 <body>
+<script>
+    const favicon = document.querySelector("link[rel=icon]");
+    if (favicon) {
+        const emoji = favicon.getAttribute("data-emoji");
+        if (emoji) {
+            const canvas = document.createElement("canvas");
+            canvas.height = 64;
+            canvas.width = 64;
+            const ctx = canvas.getContext("2d");
+            ctx.font = "64px serif";
+            ctx.fillText(emoji, 0, 64);
+            favicon.href = canvas.toDataURL();
+        }
+    }
+</script>
 <div id="outer">
 <div id="header">
     {% comment %} Insert the page title {% endcomment %}
