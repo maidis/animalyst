@@ -2,15 +2,26 @@
 
 _This application and tutorial are based on the example in the [Quelques cadriciels Web C++](https://linuxfr.org/news/quelques-cadriciels-web-c-1-2) article published on [LinuxFr.org](https://linuxfr.org/)._
 
-Currently, there are many interesting languages ​​and frameworks for server-side web development. In this area, C++ isn't the most fashionable language, but it has some interesting assets. Indeed, the C++ has many libraries (including web frameworks), it is renowned for its performance, and finally its latest standards make it more enjoyable to use.
+Currently, there are many interesting languages ​​and frameworks for server-side web development. In this area, C++ isn't the most fashionable language, but it has some interesting assets. Indeed:
 
-The purpose of this tutorial is to provide a small comparison of Cutelyst with other C++ tools available for Web back-end development, based on a sample application. The source codes for other C++ web frameworks are available on [this Git repository](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31). The different frameworks used are summarized in the appendix. Finally, a list of C++ libraries is available on [Awesome C++](http://fffaraz.github.io/awesome-cpp/).
+* C++ has many libraries (including web frameworks)
+* It's renowned for its performance
+* Its latest standards make it more enjoyable to use
 
-## Part 1: sample application, HTML generation and access to a database.
+The purpose of this tutorial is to provide:
 
-### Final application
+* A small comparison of Cutelyst with other C++ tools available for Web back-end development, based on a example application
+* An introduction to application development with Cutelyst
+* Some hints about deploying a Cutelyst project to production
 
-We want to implement an application that displays images of animals stored on the server. A form is used to indicate the beginning of the name of the animals to display. You can display the complete image by clicking on the thumbnail and you can display an information page via a link at the bottom of the page. Animal data (names and file paths) are stored in a SQLite database on the server.
+Source codes for Cutelyst is included [here](https://github.com/maidis/animalyst). Source codes for other C++ web frameworks are available on [this Git repository](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31). The different frameworks that used are summarized in the appendix. Finally, a list of C++ libraries is available on [Awesome C++](http://fffaraz.github.io/awesome-cpp/).
+
+
+## Part 1: Example Application, HTML Generation and Access to a Database
+
+### Final Application
+
+We want to implement an application that displays images of animals stored on the server. A form is used to indicate the beginning of the name of the animals to display. You can display the image in full size by clicking on the thumbnail and you can display an information page via a link at the bottom of the page. Animal data (names and file paths) are stored in a SQLite database on the server.
 
 ![](animalyst.gif)
 
@@ -35,7 +46,7 @@ INSERT INTO animals (name, image) VALUES('owl', 'owl.jpg');
 ...
 ```
 
-The model part then comes down to a type Animal and a function getAnimals that queries the database and returns the type records Animal whose name begins with the given prefix. File Animal.hpp:
+The model part then comes down to a Animal type and a function getAnimals that queries the database and returns the type records Animal whose name begins with the given prefix. File Animal.hpp:
 
 ```cpp
 
