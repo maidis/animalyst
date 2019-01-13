@@ -1,0 +1,23 @@
+body {
+  background-color: azure;
+}
+
+.imgCss {
+  width: 320px;
+  height: 240px;
+}
+
+.aCss {
+  text-decoration: none;
+  color: inherit);
+}
+
+.divCss {
+  background-color: beige;
+  border: 1px solid black;
+  margin: 1em;
+  width: 320px;
+  text-align: center;
+  float: left;
+}
+

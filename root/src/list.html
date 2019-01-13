@@ -1,0 +1,19 @@
+<h1>Animals (Cutelyst)</h1>
+
+<form action="/search">
+    <p> <input type="text" name="q"> </p>
+</form>
+
+{% comment %}Display each animal in a table row{% endcomment %}
+{% for animal in animals %}
+      <a href="static/img/{{ animal.image }}">
+        <div class="divCss">
+          <p> {{ animal.name }} </p>
+          <img class="imgCss" src="static/img/{{ animal.image }}" />
+        </div>
+      </a>
+{% endfor %}
+
+<div id="footer">
+    <p style="clear: both"><a href="/about">About</a></p>
+</div>

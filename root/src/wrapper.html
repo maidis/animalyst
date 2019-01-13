@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" [%#
+    %]"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<link rel="icon" href="/static/favicon.ico">
+<title>{% if title %}{{ title }} - {% endif %}Animalyst</title>
+<link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+<div id="outer">
+<div id="header">
+    {% comment %} Insert the page title {% endcomment %}
+    <h1>{{ site.title }}</h1>
+</div>
+
+<div id="bodyblock">
+
+<div id="content">
+    {% comment %} Status and error messages {% endcomment %}
+        <span class="message">{{ status_msg }}{{ c.request.params.status_msg|escape }}</span>
+        <span class="error">{{ error_msg }}</span>
+    {% comment %} This is where Grantlee will stick all of your template's contents.{% endcomment %}
+    {{ content }}
+</div><!-- end content -->
+</div><!-- end bodyblock -->
+
+</div>
+
+</body>
+</html>
