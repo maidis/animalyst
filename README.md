@@ -242,41 +242,41 @@ vector<Animal> getAnimals(const string & myquery) {
 
 ## Part 2: Web frameworks
 
-### Micro-frameworks like Sinatra/Flask
+### Micro-frameworks like Sinatra and Flask
 
-The Web micro-frameworks, like Sinatra in Ruby or Flask in Python, aim to be simple and light. They mainly offer features to handle HTTP requests as well as a URL routing mechanism. If necessary, they can be completed by other libraries (HTML generation, access to a database in SQL...).
+Micro web frameworks, like Sinatra in Ruby or Flask in Python, aim to be simple and light. They mainly offer features to handle HTTP requests as well as a URL routing mechanism. If necessary, they can be completed by other libraries (HTML generation, access to a database in SQL...).
 
-There are several C ++ micro-frameworks, for example crow (see animals-crow) or silicon (see animals-silicon):
+There are several C++ micro-frameworks, for example crow (see animals-crow) or silicon (see animals-silicon).
 
-Here, the features of modern C ++ make the code concise and rather pleasant to read (for example, lambda for the road _animals).
+Here, the features of modern C++ make the code concise and rather pleasant to read.
 
-In a pre-treatment phase, Silicon generates the file symbols.hh, which declares the symbols defined by the programmer, including roads ( _about, _home, _mystatic...). This makes it possible to statically verify that the routes are used correctly in the code. Other languages ​​use introspection to perform this kind of checking, but C++ does not have this feature.
+In a pre-treatment phase, Silicon generates the file symbols.hh, which declares the symbols defined by the programmer, including routes ( _about, _home, _mystatic...). This makes it possible to statically verify that the routes are used correctly in the code. Other languages ​​use introspection to perform this kind of checking, but C++ doesn't have this feature.
+
 
 ### Asynchronous frameworks like Node.js
 
-Asynchronous frameworks, like Node.js / Express in JavaScript, offer the same functionalities as conventional micro-frameworks but via non-blocking functions. Thus, if a request needs a resource, the application can switch to another request while waiting for the resource to be available. This improves the overall performance of the application but requires a particular programming style, based on promises connected to call-back functions by then to form a chain of asynchronous processing.
+Asynchronous frameworks, like Node.js/Express in JavaScript, offer the same functionalities as conventional micro-frameworks but via non-blocking functions. Thus, if a request needs a resource, the application can switch to another request while waiting for the resource to be available. This improves the overall performance of the application but requires a particular programming style, based on promises connected to call-back functions by then to form a chain of asynchronous processing.
 
-There are different asynchronous frameworks in C++, for example cpprestsdk (see animals-cpprestsdk) and pistachio (see animals-pistachio):
+There are different asynchronous frameworks in C++, for example cpprestsdk (see animals-cpprestsdk) and pistachio (see animals-pistachio).
 
-Here we find a classic management of roads (with the name of the road and its processing function). However, we now have asynchronous operation, via non-blocking functions. For example, for the "  static  " route, the function serveFilereturns a promise that is connected to a call-back function , which displays a log message once the promise is resolved.
+Here we find a classic management of route (with the name of the route and its processing function). However, we now have asynchronous operation, via non-blocking functions. For example, for the "static" route, the function serveFile returns a promise that is connected to a call-back function, which displays a log message once the promise is resolved.
 
-### MVC frameworks like RoR / Django
 
-MVC Web frameworks, such as Ruby on Rails or Python Django, are classic tools whose goal is to implement any type of Web application. They usually provide all the necessary features: URL routing, pattern system, access to databases, authentication system... The MVC frameworks do not seem to be the preferred domain of C++, but there are still some interesting tools, including cppcms.
+### MVC frameworks like RoR and Django
 
-In addition to the classic features of an MVC framework, cppcms offers a fairly advanced pattern system with view inheritance and content management. For example, one can define a main view MasterView and derive views from it AboutView and HomeView inherit the characteristics of MasterViewand complement them. Finally, we can associate a content to these views (parameters of the patterns), also with an inheritance system. Using the previous example, we can define a content MasterContentfor the view MasterView, derive it HomeContentfor the view HomeViewand use directly MasterContentfor the view AboutView(no new parameter in the pattern).
+MVC web frameworks, such as Ruby on Rails or Python Django are classic tools whose goal is to implement any type of web applications. They usually provide all the necessary features: URL routing, template system, access to databases, authentication system... The MVC frameworks don't seem to be the preferred domain of C++, but there are still some interesting tools, including cppcms amd cutelyst.
 
-At the code level, the file animals-cppcms/src/content.hdefines the contents:
+In addition to the classic features of an MVC framework, cppcms offers a fairly advanced template system with view inheritance and content management. For example, one can define a main view MasterView and derive views from it AboutView and HomeView inherit the characteristics of MasterView and complement them. Finally, we can associate a content to these views (parameters of the templates), also with an inheritance system. Using the previous example, we can define a content MasterContent for the view MasterView, derive it HomeContent for the view HomeView and use directly MasterContent for the view AboutView (no new parameter in the template).
 
 MVC frameworks are effective tools for implementing complex applications. However, they require a lot of training and can be oversized for small, simple applications.
 
+
 ### Frameworks based bosses at PHP
 
-The tntnet framework offers a pattern- based system, similar to PHP. If this framework is rather anecdotal in the C++ ecosystem, it seems however rather effective in its approach: to write classic HTML code and to add sections of C++ code where it is necessary.
+The tntnet framework offers a template-based system, similar to PHP. Even if this framework is rather anecdotal in the C++ ecosystem, it seems rather effective in its approach: to write classic HTML code and to add sections of C++ code where it is necessary.
 
-For example, the file animals-tntent/src/myimg.ecppdefines an application that displays an image whose name is passed as a parameter:
+Note that this type of framework is perhaps less suited to the development of complex applications (readability of templates, reuse...).
 
-Note that this type of framework is perhaps less suited to the development of complex applications (readability of patterns, reuse ...).
 
 ### Widget-based frameworks
 
@@ -284,30 +284,33 @@ These tools are inspired by desktop graphical frameworks, such as Qt or gtkmm, t
 
 Web-based widgets are surprisingly unpopular, even in all languages, while their potential seems important. Indeed, they allow to develop a client-server fullstack application using a classic graphical interface library and without having to worry too much about the network architecture of the application.
 
-In C++, the most successful framework in this category is certainly Wt. Wt has many classic or advanced widgets, a SQL ORM, an authentication system, the ability to manipulate HTML and CSS, etc. In Wt, the main program is to route URLs to the corresponding applications (animals-wt / src / main.cpp):
+In C++, the most successful framework in this category is certainly Wt. Wt has many classic or advanced widgets, a SQL ORM, an authentication system, the ability to manipulate HTML and CSS, etc. In Wt, the main program is to route URLs to the corresponding applications.
 
-These Wt applications correspond to conventional graphical interfaces, but with a client-server architecture. For example, to define the application "about" (static page) via the system of HTML / CSS patterns, just define the following class ( animals-wt/src/AboutApp.hpp):
+These Wt applications correspond to conventional graphical interfaces, but with a client-server architecture.
 
-For a more complex application, for example the page displaying the animals, we can define a new widget AnimalWidget that implements a thumbnail, then use this class to display all the animals read in the database (see animals-wt/src/HomeApp.hpp):
+For a more complex application, for example the page displaying the animals, we can define a new widget that implements a thumbnail, then use this class to display all the animals read in the database.
 
-At first glance, this implementation may seem longer and more complicated than previous implementations. However, its code should seem familiar to any desktop GUI developer. In addition, this implementation manages the entire application ( fullstack ), not the server part only. For example, connecting the signal _myquery->textInput()to the function HomeApp::filterAnimalsinvolves real-time client-side updates, which would be much harder to implement with previous frameworks.
+At first glance, this implementation may seem longer and more complicated than previous implementations. However, its code should seem familiar to any desktop GUI developer. In addition, this implementation manages the entire application (fullstack), not the server part only. For example, connecting the signal `_myquery->textInput()` to the `HomeApp::filterAnimals` function involves real-time client-side updates, which would be much harder to implement with previous frameworks.
 
 
 ## Conclusion
 
-To develop back-end Web applications, C++ is a very feasible option. With its latest developments, the language is generally simpler and safer to use, without compromising on performance. Many C++ libraries are available for web development: patterns, HTML generation, SQL connection, ORM... Web frameworks are also numerous and varied: MVC framework at RoR / Django, Sinatra / Flask micro-framework, asynchronous framework to the Node.js, framework based PHP patterns, and even fullstack framework based widgets. Finally, we note that with Nix, it is very easy to configure a project integrating this kind of libraries. Of course, all this will mainly interest developers who already know C++, because many other languages ​​also have very interesting tools for Web development.
+To develop back-end web applications, C++ is a very feasible option. With its latest developments, the language is generally simpler and safer to use, without compromising on performance. Many C++ libraries are available for web development: templates, HTML generation, SQL connection, ORM... Web frameworks are also numerous and varied: MVC frameworks like RoR and Django, micro-frameworks like Sinatra and Flask, asynchronous frameworks like Node.js, PHP templates based frameworks, and even fullstack frameworks based on widgets. Of course, all this will mainly interest developers who already know C++, because many other languages ​​also have very interesting tools for web development.
 
 
-## Summary of projects and frameworks presented
+## Frameworks Used in the "Animals" Projects
 
-| project | Web framework | HTML generator | SQL interface |
+The following frameworks, libraries, and tools used for implementing the HTTP server, the HTML generation and the SQL database access.
+
+| Project | Web Framework | HTML Generator | SQL Interface |
 |---|---|---|---|
-| [animals-cppcms](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-cppcms) | [cppcms](http://cppcms.com/wikipp/en/page/main/) (MVC framework) | cppcms (template system) | cppcms (SQL connector) |
-| [animals-cpprestsdk](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-cpprestsdk) | [cpprestsdk](https://github.com/Microsoft/cpprestsdk) (asynchronous network framework) | [ctml](https://github.com/tinfoilboy/CTML) (document generator) | [sqlite_orm](https://github.com/fnc12/sqlite_orm) (ORM) |
-| [animals-crow](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-crow) | http: [crow](https://github.com/ipkn/crow) (micro-framework) | crow (template system) | [sqlpp11](https://github.com/rbock/sqlpp11) (ORM) |
-| [animals-nodejs](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-nodejs) (Javascript/Node.js) | [express](https://expressjs.com/) (micro-framework asynchrone) | [pug](https://pugjs.org) (générateur de documents) | [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3) (connecteur SQL) |
-| [animals-pistache](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-pistache) | [pistache](http://pistache.io/) (micro-framework asynchrone) | [kainjow mustache](https://github.com/kainjow/Mustache) (système de templates) | [sqlite_modern_cpp](https://github.com/SqliteModernCpp/sqlite_modern_cpp) (connecteur SQL) |
-| [animals-scotty](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-scotty) (Haskell) | [scotty](http://hackage.haskell.org/package/scotty) (micro-framework) | [lucid](https://hackage.haskell.org/package/lucid) and [clay](https://hackage.haskell.org/package/clay) (générateurs de documents) | [sqlite-simple](https://hackage.haskell.org/package/sqlite-simple) (connecteur SQL) |
-| [animals-silicon](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-silicon) | [silicon](http://siliconframework.org/) (micro-framework) | aucun | silicon (connecteur SQL) |
-| [animals-tntnet](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-tntnet) | [tntnet](http://www.tntnet.org/tntnet.html) (framework basé templates) | tntnet (système de templates) | tntnet (connecteur SQL) |
-| [animals-wt](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-wt) | [wt](https://www.webtoolkit.eu/wt) (widget based software) | wt (system of  widgets + templates) | wt (ORM) |
+| [animals-cppcms](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-cppcms) | [cppcms](http://cppcms.com/wikipp/en/page/main/) (web framework) | cppcms (templating system) | cppcms (SQL connector) |
+| [animals-cpprestsdk](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-cpprestsdk) | [cpprestsdk](https://github.com/Microsoft/cpprestsdk) (asynchronous networking framework) | [ctml](https://github.com/tinfoilboy/CTML) (html document generator) | [sqlite_orm](https://github.com/fnc12/sqlite_orm) (ORM) |
+| [animals-crow](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-crow) | http: [crow](https://github.com/ipkn/crow) (lightweight web framework) | crow (templating system) | [sqlpp11](https://github.com/rbock/sqlpp11) (ORM) |
+| [animals-cutelyst](https://github.com/maidis/animalyst) | [cutelyst](https://github.com/cutelyst/cutelyst) (web framework) | [grantlee](https://github.com/steveire/grantlee) (templating system) | [cutelyst](https://github.com/cutelyst/cutelyst/tree/master/Cutelyst/Plugins/Utils/Sql) (SQL connector) |
+| [animals-nodejs](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-nodejs) (Javascript/Node.js) | [express](https://expressjs.com/) (asynchronous lightweight web framework) | [pug](https://pugjs.org) (document generator) | [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3) (SQL connector) |
+| [animals-pistache](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-pistache) | [pistache](http://pistache.io/) (asynchronous lightweight web framework) | [kainjow mustache](https://github.com/kainjow/Mustache) (templating system) | [sqlite_modern_cpp](https://github.com/SqliteModernCpp/sqlite_modern_cpp) (SQL connector) |
+| [animals-scotty](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-scotty) (Haskell) | [scotty](http://hackage.haskell.org/package/scotty) (lightweight web framework) | [lucid](https://hackage.haskell.org/package/lucid) and [clay](https://hackage.haskell.org/package/clay) (document generators) | [sqlite-simple](https://hackage.haskell.org/package/sqlite-simple) (SQL connector) |
+| [animals-silicon](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-silicon) | [silicon](http://siliconframework.org/) (lightweight web framework) | none | silicon (SQL connector) |
+| [animals-tntnet](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-tntnet) | [tntnet](http://www.tntnet.org/tntnet.html) (template-based web framework) | tntnet (templating system) | tntnet (SQL connector) |
+| [animals-wt](https://framagit.org/nokomprendo/tuto_fonctionnel/tree/master/posts/tuto_fonctionnel_31/animals-wt) | [wt](https://www.webtoolkit.eu/wt) (web GUI framework) | wt (widget system + templates) | wt (ORM) |
