@@ -2,7 +2,7 @@
 
 #include "root.h"
 
-#include <Cutelyst/Plugins/View/Grantlee/grantleeview.h>
+#include <Cutelyst/Plugins/View/Cutelee/cuteleeview.h>
 
 #include <QtSql>
 #include <Cutelyst/Plugins/Utils/Sql>
@@ -21,7 +21,7 @@ bool Animals::init()
 {
     new Root(this);
 
-    auto view = new GrantleeView(this);
+    auto view = new CuteleeView(this);
     view->setIncludePaths({ pathTo("root/src") });
     view->setWrapper("wrapper.html");
 
