@@ -5,13 +5,12 @@
 
 using namespace Cutelyst;
 
-class Root : public Controller
+class Root : public Cutelyst::Controller
 {
     Q_OBJECT
     C_NAMESPACE("")
 public:
-    explicit Root(QObject *parent = nullptr);
-    ~Root();
+    explicit Root(QObject *parent = nullptr) : Cutelyst::Controller(parent) {}
 
     C_ATTR(index, :Path :AutoArgs)
     void index(Context *c);

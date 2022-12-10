@@ -5,14 +5,6 @@
 
 using namespace Cutelyst;
 
-Root::Root(QObject *parent) : Controller(parent)
-{
-}
-
-Root::~Root()
-{
-}
-
 void Root::defaultPage(Context *c)
 {
     c->response()->body() = "Page not found!";

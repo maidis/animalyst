@@ -3,17 +3,14 @@
 
 #include <Cutelyst/Application>
 
-using namespace Cutelyst;
-
-class Animals : public Application
+class Animals : public Cutelyst::Application
 {
     Q_OBJECT
     CUTELYST_APPLICATION(IID "Animals")
-public:
-    Q_INVOKABLE explicit Animals(QObject *parent = nullptr);
-    ~Animals();
+    public:
+    Q_INVOKABLE explicit Animals(QObject *parent = nullptr) : Cutelyst::Application(parent) {}
 
-    bool init();
+    bool init() override;
 
     virtual bool postFork() override;
 };

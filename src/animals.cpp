@@ -9,14 +9,6 @@
 
 using namespace Cutelyst;
 
-Animals::Animals(QObject *parent) : Application(parent)
-{
-}
-
-Animals::~Animals()
-{
-}
-
 bool Animals::init()
 {
     new Root(this);
