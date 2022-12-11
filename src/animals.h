@@ -7,7 +7,7 @@ class Animals : public Cutelyst::Application
 {
     Q_OBJECT
     CUTELYST_APPLICATION(IID "Animals")
-    public:
+public:
     Q_INVOKABLE explicit Animals(QObject *parent = nullptr) : Cutelyst::Application(parent) {}
 
     bool init() override;

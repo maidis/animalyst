@@ -3,8 +3,6 @@
 
 #include <Cutelyst/Controller>
 
-using namespace Cutelyst;
-
 class Root : public Cutelyst::Controller
 {
     Q_OBJECT
@@ -13,20 +11,20 @@ public:
     explicit Root(QObject *parent = nullptr) : Cutelyst::Controller(parent) {}
 
     C_ATTR(index, :Path :AutoArgs)
-    void index(Context *c);
+    void index(Cutelyst::Context *c);
 
     C_ATTR(search, :Local :AutoArgs)
-    void search(Context *c);
+    void search(Cutelyst::Context *c);
 
     C_ATTR(about, :Local :AutoArgs)
-    void about(Context *c);
+    void about(Cutelyst::Context *c);
 
     C_ATTR(defaultPage, :Path)
-    void defaultPage(Context *c);
+    void defaultPage(Cutelyst::Context *c);
 
 private:
     C_ATTR(End, :ActionClass("RenderView"))
-    void End(Context *c) { Q_UNUSED(c); }
+    void End(Cutelyst::Context *c) { Q_UNUSED(c); }
 };
 
 #endif
