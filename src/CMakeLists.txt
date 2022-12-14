@@ -11,10 +11,10 @@ add_library(Animals SHARED ${Animals_SRCS})
 # Link to Cutelyst
 target_link_libraries(Animals
     Cutelyst::Core
-    Cutelyst::View::Grantlee
+    Cutelyst::View::Cutelee
     Cutelyst::Utils::Sql
-    Grantlee5::Templates
-    Qt5::Core
-    Qt5::Network
-    Qt5::Sql
+    Cutelee::Templates
+    Qt6::Core
+    Qt6::Network
+    Qt6::Sql
 )
